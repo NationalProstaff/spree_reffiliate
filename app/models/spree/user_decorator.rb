@@ -1,4 +1,4 @@
-Spree::User.class_eval do
+Spree.user_class.class_eval do
   include Spree::TransactionRegistrable
   attr_accessor :referral_code, :affiliate_code, :can_activate_associated_partner
 
