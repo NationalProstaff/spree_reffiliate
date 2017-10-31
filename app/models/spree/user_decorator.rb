@@ -2,9 +2,9 @@ Spree.user_class.class_eval do
   include Spree::TransactionRegistrable
   attr_accessor :referral_code, :affiliate_code, :can_activate_associated_partner
 
-  has_one :referral
-  has_one :referred_record
-  has_one :affiliate, through: :referred_record, foreign_key: :affiliate_id
+  has_one :referral, class_name: 'Spree::Referral'
+  has_one :referred_record, class_name: 'Spree::ReferredRecord'
+  has_one :affiliate, through: :referred_record, foreign_key: :affiliate_id, class_name: 'Spree::Affiliate'
   has_one :affiliate_record, class_name: 'Spree::ReferredRecord'
   has_many :transactions, as: :commissionable, class_name: 'Spree::CommissionTransaction', dependent: :restrict_with_error
 

@@ -28,7 +28,6 @@ module Spree
 
       def evaluate_amount
         self.amount = Spree::TransactionService.new(self).calculate_commission_amount
-        return true
       end
 
       def check_not_locked
