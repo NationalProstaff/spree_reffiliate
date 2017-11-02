@@ -49,6 +49,7 @@ en:
     listing_commissions: Listing Commissions
     affiliate_mailer:
       activation_instruction_subject: Welcome, Activation Instruction
+      activation_notification_subject: Welcome to the Affiliate Program
     affiliate_confirmation:
       editing_affiliate: EDITING AFFILIATE
       not_found: Affiliate Not Found

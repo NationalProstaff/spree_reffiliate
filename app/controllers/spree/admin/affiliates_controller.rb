@@ -6,7 +6,12 @@ module Spree
       before_action :build_or_load_affiliate_commission_rule, only: [:new, :edit]
 
       def index
-        @affiliates = Affiliate.all.page(params[:page]).per(params[:per_page] || Spree::Config[:admin_affiliates_per_page])
+        @affiliates = Affiliate.includes(:user).all.page(params[:page]).per(params[:per_page] || Spree::Config[:admin_affiliates_per_page])
+      end
+
+      def create
+        binding.pry
+        super
       end
 
       def transactions
