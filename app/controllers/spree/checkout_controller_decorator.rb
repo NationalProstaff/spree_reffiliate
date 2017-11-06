@@ -4,12 +4,12 @@ Spree::CheckoutController.class_eval do
 
   private
     def set_affilate
-      if @order.payment? && session[:affiliate]
-        @order.affiliate = Spree::Affiliate.find_by(path: session[:affiliate])
+      if @order.payment? && session[:affiliate_id]
+        @order.affiliate = Spree::Affiliate.find_by(user_id: session[:affiliate_id])
       end
     end
 
     def clear_session
-      session[:affiliate] = nil if @order.completed?
+      session[:affiliate_id] = nil if @order.completed?
     end
 end

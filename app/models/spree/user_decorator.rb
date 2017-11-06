@@ -19,8 +19,9 @@ Spree.user_class.class_eval do
     referred_record.try(:referral).try(:user)
   end
 
+  # referrals aren't always enabled
   def referred_count
-    referral.referred_records.count
+    referral.referred_records.count rescue 0
   end
 
   def referred?

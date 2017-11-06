@@ -4,7 +4,7 @@ class CreateSpreeCommissionTransactions < ActiveRecord::Migration
       t.references :affiliate, index: true
       t.references :commission, index: true
 
-      t.decimal :amount
+      t.decimal :amount, precision: 10, scale: 2
       t.boolean :locked, default: false, null: false
 
       t.references :commissionable, polymorphic: true

@@ -1,5 +1,6 @@
 <h3><%= Spree.t(:referred_users) %></h3>
 
+<% @referred_records ||= [] %>
 <% if @referred_records.any? %>
   <table class="table">
     <thead>
