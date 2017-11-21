@@ -5,8 +5,7 @@ module Spree
       belongs_to :commission_rule, class_name: 'Spree::CommissionRule'
     end
 
-    validates :rate, presence: true
-    validates :rate, numericality: { greater_than: 0, less_than_or_equal_to: 100, allow_nil: true }
+    validates :rate, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 100, allow_nil: true }
     validates :affiliate_id, uniqueness: { scope: :commission_rule_id, allow_blank: true }
 
     before_create :assign_type_of_commission
