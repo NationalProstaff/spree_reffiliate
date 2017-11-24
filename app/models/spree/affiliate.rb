@@ -52,8 +52,6 @@ module Spree
 
       def create_affiliate_user
         @user = Spree.user_class.find_or_initialize_by(id: user_id)
-        affiliate_role = Spree::Role.affiliate
-        user.spree_roles << affiliate_role unless user.spree_roles.include?(affiliate_role)
         user.save!
       end
 

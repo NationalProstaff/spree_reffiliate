@@ -40,15 +40,6 @@ Spree.user_class.class_eval do
     !associated_partner.nil?
   end
 
-  protected
-    def password_required?
-      if new_record? && spree_roles.include?(Spree::Role.affiliate)
-        false
-      else
-        super
-      end
-    end
-
   private
     def process_referral
       if referral_code.present?
