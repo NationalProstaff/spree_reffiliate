@@ -1,5 +1,5 @@
 Spree::StoreCredit.class_eval do
-  REFERRAL_STORE_CREDIT_CATEGORY = 'Referral Credit'
+  REFERRAL_STORE_CREDIT_CATEGORY = 'Referral Credit' unless const_defined?(:REFERRAL_STORE_CREDIT_CATEGORY)
 
   has_one :referred_record
 
