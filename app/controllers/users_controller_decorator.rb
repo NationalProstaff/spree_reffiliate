@@ -1,32 +1,37 @@
-Spree::UsersController.class_eval do
+# CHANGED:
+# This controller overriding is commented as Spree::UsersController
+# is added by spree_auth_devise gem which is not used in our application
 
-  prepend_before_action :affiliate_user, only: :update
-  before_action :load_referred_records, only: :referral_details
 
-  def referral_details
-  end
+# Spree::UsersController.class_eval do
 
-  private
-    def load_object
-      if @affiliate
-        @user ||= @affiliate_user
-      else
-        @user ||= spree_current_user
-        authorize! params[:action].to_sym, @user
-      end
-    end
+#   prepend_before_action :affiliate_user, only: :update
+#   before_action :load_referred_records, only: :referral_details
 
-    def affiliate_user
-      if params[:activation_token]
-        @affiliate ||= Spree::Affiliate.find_by(activation_token: params[:activation_token])
-        (redirect_to root_path, error: Spree.t(:affiliate_not_found) and return) unless @affiliate
-        @affiliate_user ||= Spree::User.find_by(id: @affiliate.user_id)
-        @affiliate_user.can_activate_associated_partner = true
-      end
-    end
+#   def referral_details
+#   end
 
-    def load_referred_records
-      @referred_records = spree_current_user.referral.referred_records.order({ created_at: :desc }).
-                            page(params[:page]).per(params[:per_page] || Spree::Config[:referred_records_per_page])
-    end
-end
+#   private
+#     def load_object
+#       if @affiliate
+#         @user ||= @affiliate_user
+#       else
+#         @user ||= spree_current_user
+#         authorize! params[:action].to_sym, @user
+#       end
+#     end
+
+#     def affiliate_user
+#       if params[:activation_token]
+#         @affiliate ||= Spree::Affiliate.find_by(activation_token: params[:activation_token])
+#         (redirect_to root_path, error: Spree.t(:affiliate_not_found) and return) unless @affiliate
+#         @affiliate_user ||= Spree::User.find_by(id: @affiliate.user_id)
+#         @affiliate_user.can_activate_associated_partner = true
+#       end
+#     end
+
+#     def load_referred_records
+#       @referred_records = spree_current_user.referral.referred_records.order({ created_at: :desc }).
+#                             page(params[:page]).per(params[:per_page] || Spree::Config[:referred_records_per_page])
+#     end
+# end
